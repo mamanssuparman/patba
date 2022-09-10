@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUjiansTable extends Migration
+class CreateJawabanUjiansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateUjiansTable extends Migration
      */
     public function up()
     {
-        Schema::create('ujians', function (Blueprint $table) {
+        Schema::create('jawaban_ujians', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('daftar_ujians_id');
-            $table->foreignId('users_id');
-            $table->enum('status_ujian',['BM','SM','S'])->default('BM');
-            $table->double('score')->default('0');
-            $table->string('token','20');
+            $table->foreignId('soal_ujian_id');
+            $table->foreignId('jawabans_id');
+            $table->enum('jawaban_pilih',['1','0'])->default('0');
+            $table->integer('jawaban_oders');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateUjiansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ujians');
+        Schema::dropIfExists('jawaban_ujians');
     }
 }
