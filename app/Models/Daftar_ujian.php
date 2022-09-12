@@ -30,4 +30,10 @@ class Daftar_ujian extends Model
     {
         return $this->hasMany(Detail_daftar_ujian::class, 'daftar_ujians_id', 'id');
     }
+
+    // Relasi ke tabel Ujian 1 to M
+    public function ujians()
+    {
+        return $this->hasMany(Ujian::class, 'daftar_ujians_id', 'id');
+    }
 }
