@@ -4,6 +4,7 @@
         <div class="col-md-12">
             ini adalah halaman dashboard adminwfefe
             percobaan lagi
+            perubahan
         </div>
     </div>
 @endsection
