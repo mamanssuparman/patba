@@ -19,4 +19,9 @@ class Jawaban extends Model
     {
         return $this->belongsTo(Soal::class, 'soals_id', 'id');
     }
+    // relasi ke tabel jawaban_ujian 1 to M
+    public function jawaban_ujian()
+    {
+        return $this->hasMany(Jawaban_ujian::class, 'jawabans_id', 'id');
+    }
 }

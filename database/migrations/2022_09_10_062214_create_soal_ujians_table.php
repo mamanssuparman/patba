@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHasilUjiansTable extends Migration
+class CreateSoalUjiansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateHasilUjiansTable extends Migration
      */
     public function up()
     {
-        Schema::create('hasil_ujians', function (Blueprint $table) {
+        Schema::create('soal_ujians', function (Blueprint $table) {
             $table->id();
             $table->foreignId('ujians_id');
             $table->foreignId('soals_id');
-            $table->foreignId('jawabans_id');
-            $table->enum('jawaban',['0','1']);
-            $table->enum('jawab',['0','1'])->default('0');
-            $table->double('score')->default('0');
+            $table->double('nilai')->default('0');
+            $table->timestamp('waktu_tampil');
+            $table->integer('ujian_order_soal');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateHasilUjiansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hasil_ujians');
+        Schema::dropIfExists('soal_ujians');
     }
 }

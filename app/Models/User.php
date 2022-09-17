@@ -37,9 +37,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
+    // Nilai balik relasi dari tabel kelas
     public function kelas()
     {
         return $this->belongsTo(Kelas::class, 'kelas_id', 'id');
+    }
+    // Relasi ke tabel ujian 1 to M
+    public function ujians()
+    {
+        return $this->hasMany(Ujian::class, 'users_id', 'id');
     }
 }
