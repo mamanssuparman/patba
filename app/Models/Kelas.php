@@ -13,12 +13,6 @@ class Kelas extends Model
     ];
     protected $table = 'kelas';
 
-    // Relasi ke tabel pelajaran 1 to M
-    public function pelajarans()
-    {
-        return $this->hasMany(Pelajaran::class, 'kelas_id', 'id');
-    }
-
     // Relasi ke tabel detail daftar ujians 1 to M
     public function detail_daftar_ujian()
     {
