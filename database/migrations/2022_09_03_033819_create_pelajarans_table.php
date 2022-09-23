@@ -15,7 +15,7 @@ class CreatePelajaransTable extends Migration
     {
         Schema::create('pelajarans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('kelas_id');
+            $table->string('nama_pelajaran');
             $table->string('description','200');
             $table->timestamps();
         });
