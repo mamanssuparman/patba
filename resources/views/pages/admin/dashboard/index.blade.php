@@ -1,10 +1,10 @@
 @extends('layouts.Admin.kerangka')
-@section('conten')
+@section('content')
     <div class="row">
-        <div class="col-md-12">
-            ini adalah halaman dashboard adminwfefe
-            percobaan lagi
-            perubahan
+        <div class="card">
+            <div class="card-bodyy mb-3">
+                untuk data dashboard
+            </div>
         </div>
     </div>
 @endsection
