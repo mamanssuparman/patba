@@ -53,7 +53,7 @@ class MataPelajaranController extends Controller
             'description'               => 'required'
         ]);
         Pelajaran::create($validasidata);
-        return redirect('/admin/matapelajaran')->with('success','Data Pelajaran berhasi di simpan');
+        return redirect('/admin/matapelajaran')->with('success', 'Data Pelajaran berhasi di simpan');
     }
 
     /**
@@ -75,7 +75,14 @@ class MataPelajaranController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = [
+            'title'             => 'PATBA | Mata Pelajaran',
+            'mainbreadcrumb'    => 'Mata Pelajaran',
+            'breadcrumb1'       => 'Mata Pelajaran',
+            'breadcrumb2'       => 'Edit',
+            'dataPelajaran'     => Pelajaran::where('id', $id)->first()
+        ];
+        return view('pages.admin.matapelajaran.edit', $data);
     }
 
     /**
@@ -87,7 +94,21 @@ class MataPelajaranController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ($request->nama_pelajaran != $request->nama_pelajaran_old) {
+            $validasidata = $request->validate([
+                'nama_pelajaran'        => 'required|unique:pelajarans,nama_pelajaran',
+                'description'           => 'required'
+            ]);
+            Pelajaran::where('id', $id)->update($validasidata);
+            return redirect('/admin/matapelajaran')->with('success', 'Data berhasil di perbaharui.');
+        } else {
+            $validasidataold    = $request->validate([
+                'nama_pelajaran'        => 'required',
+                'description'           => 'required'
+            ]);
+            Pelajaran::where('id', $id)->update($validasidataold);
+            return redirect('/admin/matapelajaran')->with('success', 'Data berhasil di perbaharui.');
+        }
     }
 
     /**
@@ -98,6 +119,8 @@ class MataPelajaranController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Pelajaran::where('id',$id)->delete();
+        // disini nanti perintah untuk menghapus data relasi ke tabel lainnya
+        return redirect('/admin/matapelajaran')->with('success', 'Data berhasil di hapus.');
     }
 }

@@ -9,19 +9,22 @@
                             <li class="fa fa-undo"></li> Kembali
                         </span></a>
                 </div>
-                <form action="/admin/matapelajaran" method="POST">
+                <form action="{{ url('/admin/matapelajaran/' . $dataPelajaran->id) }}" method="POST">
                     @csrf
+                    @method('PUT')
                     <div class="form-group">
                         <label for="nama_pelajaran">Nama Pelajaran</label>
                         <input type="text" class="form form-control" name="nama_pelajaran" id="nama_pelajaran" required
-                            value="{{ old('nama_pelajaran') }}">
+                            value="{{ old('nama_pelajaran', $dataPelajaran->nama_pelajaran) }}">
+                        <input type="hidden" class="form form-control" name="nama_pelajaran_old" id="nama_pelajaran_old"
+                            required value="{{ $dataPelajaran->nama_pelajaran }}">
                         @error('nama_pelajaran')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="description">Deskripsi</label>
-                        <textarea name="description" id="editor" cols="30" rows="10" class="form form-control">{{ old('description') }}</textarea>
+                        <textarea name="description" id="editor" cols="30" rows="10" class="form form-control">{{ old('description', $dataPelajaran->description) }}</textarea>
                         @error('description')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror

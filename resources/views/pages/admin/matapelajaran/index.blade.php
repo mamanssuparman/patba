@@ -58,6 +58,7 @@
                     visible: true
                 },
                 {
+                    // var no = $_POST['start']
                     "targets": 0,
                     "class": "text-nowrap",
                     "render": function(data, type, row, meta) {

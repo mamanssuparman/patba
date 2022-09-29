@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\Admin\DataJs;
-use App\Http\Controllers\Admin\MataPelajaranController;
-use App\Http\Controllers\AuthAdminController;
+use UniSharp\LaravelFilemanager\Lfm;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DataJs;
+use App\Http\Controllers\AuthAdminController;
+use App\Http\Controllers\Admin\MataPelajaranController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,9 @@ Route::middleware(['admin'])->group(function () {
             'breadcrumb2'       => 'Index'
         ]);
     })->name('admin-dashboard');
-    Route::resource('/admin/matapelajaran', MataPelajaranController::class)->name('index', 'admin-matapelajaran');
+    Route::resource('/admin/matapelajaran', MataPelajaranController::class)->name('index', 'admin-matapelajaran')->except('show');
     Route::any('/pelajaran/data',[DataJs::class,'dataPelajaran'])->name('datapelajaran');
+});
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    Lfm::routes();
 });
