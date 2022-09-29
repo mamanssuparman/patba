@@ -1,7 +1,7 @@
 <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item border-rad">
-            <a href="{{ route('admin-dashboard') }}" class="nav-link active">
+            <a href="{{ route('admin-dashboard') }}" class="nav-link {{ Request::is('admin/dashboard*')?'active':'' }}">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                     Dashboard
@@ -10,7 +10,7 @@
         </li>
 
         <li class="nav-item">
-            <a href="#" class="nav-link ">
+            <a href="#" class="nav-link {{ Request::is('admin/matapelajaran*') ? 'active' : '' }}">
 
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class=" mb-1 nav-icon bi bi-journal-text" viewBox="0 0 16 16">
@@ -28,7 +28,7 @@
             </a>
             <ul class="nav nav-treeview ">
                 <li class="nav-item">
-                    <a href="matapelajaran.html" class="nav-link ">
+                    <a href="{{ route('admin-matapelajaran') }}" class="nav-link {{ Request::is('admin/matapelajaran*') ? 'active' : '' }}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Mata Pelajaran</p>
                     </a>

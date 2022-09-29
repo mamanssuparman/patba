@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="/admin/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="/admin/plugins/summernote/summernote-bs4.min.css">
+    <script src="/admin/ckeditor4/ckeditor.js"></script>
 
     <style>
         .border-rad {

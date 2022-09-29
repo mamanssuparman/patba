@@ -10,7 +10,7 @@ class Pelajaran extends Model
     use HasFactory;
     protected $fillable = [
         'description',
-        'kelas_id'
+        'nama_pelajaran'
     ];
     protected $table = 'pelajarans';
     public function soals()
