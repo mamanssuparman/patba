@@ -17,6 +17,6 @@ class AuthAdminController extends Controller
             $request->session()->regenerate();
             return redirect()->intended('/admin/dashboard');
         }
-        return back()->with('error','Username atau password yang anda masukkan salah/ tidak dikenali.!');
+        return back()->with('error','Email atau password salah!');
     }
 }
