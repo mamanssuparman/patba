@@ -22,7 +22,7 @@ Route::get('/', function () {
 });
 Route::get('/admin/login', function () {
     return view('pages.login', [
-        'title'         => 'PATBA | LOGIN'
+        'title'         => 'PATBA - Login'
     ]);
 });
 
