@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DataJs;
 use App\Http\Controllers\AuthAdminController;
 use App\Http\Controllers\Admin\MataPelajaranController;
+use App\Http\Controllers\Admin\KelasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,10 @@ Route::middleware(['admin'])->group(function () {
     Route::resource('/admin/matapelajaran', MataPelajaranController::class)->name('index', 'admin-matapelajaran')->except('show');
     Route::any('/pelajaran/data',[DataJs::class,'dataPelajaran'])->name('datapelajaran');
 });
+
+Route::resource('/admin/kelas', KelasController::class)->name('index', 'admin-kelas')->except('show');
+Route::any('/kelas/data',[DataJs::class,'dataKelas'])->name('datakelas');
+
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     Lfm::routes();
 });
