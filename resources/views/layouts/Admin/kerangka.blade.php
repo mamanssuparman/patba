@@ -35,7 +35,7 @@
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60"
+            <img class="animation__shake" src="/admin/dist/img/logosmk.png" alt="logosmk" height="85"
                 width="60">
         </div>
 
@@ -72,7 +72,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="#" class="brand-link">
-                <img src="logosmk.png" alt="AdminLTE Logo" class="brand-image"
+                <img src="/admin/img/logosmk.png" alt="AdminLTE Logo" class="brand-image"
                     style="opacity: .8; margin-top: 2px; margin-bottom: 2px;">
                 <span class="brand-text font-weight-light">PATBA</span>
             </a>
