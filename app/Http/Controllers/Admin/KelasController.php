@@ -81,7 +81,7 @@ class KelasController extends Controller
             'breadcrumb2'       => 'Edit',
             'dataKelas'         => Kelas::where('id', $id)->first()
         ];
-        return view('pages.admin.kelas.create', $data); 
+        return view('pages.admin.kelas.edit', $data); 
     }
 
     /**
@@ -93,7 +93,19 @@ class KelasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ($request->nama_kelas != $request->nama_kelas_old) {
+            $validasidata = $request->validate([
+                'nama_kelas' => 'required|unique:kelas,nama_kelas'
+            ]);
+            Kelas::where('id', $id)->update($validasidata);
+            return redirect('/admin/kelas')->with('success', 'Data Kelas berhasil diperbarui!');
+        } else {
+            $validasidataold = $request->validate([
+                'nama_kelas' => 'required'
+            ]);
+            Kelas::where('id', $id)->update($validasidataold);
+            return redirect('/admin/kelas')->with('success', 'Data Kelas berhasil diperbarui!');
+        }
     }
 
     /**
@@ -104,6 +116,8 @@ class KelasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Kelas::where('id', $id)->delete();
+        // baris perintah delete tabel relasi
+        return redirect('/admin/kelas')->with('success', 'Data Kelas berhasil dihapus!');
     }
 }
