@@ -229,6 +229,11 @@ input, select {
 table tbody tr:hover {
   background-color: rgb(247, 247, 247) !important;
 }
+.alert-sukses {
+  color: #2FA84F;
+  background-color: #DCF7E3;
+  border-color: #c3e6cb !important;
+}
 
 /* .edit-opsi:hover {
   background-color: red;
@@ -5602,7 +5607,7 @@ a.badge-dark:focus, a.badge-dark.focus {
   padding: 0.75rem 1.25rem;
   margin-bottom: 1rem;
   border: 1px solid transparent;
-  border-radius: 0.25rem;
+  border-radius: 0.50rem;
 }
 
 .alert-heading {
@@ -5627,9 +5632,9 @@ a.badge-dark:focus, a.badge-dark.focus {
 }
 
 .alert-primary {
-  color: #004085;
-  background-color: #cce5ff;
-  border-color: #b8daff;
+  color: #084298;
+  background-color: #cfe2ff;
+  border-color: #b6d4fe;
 }
 
 .alert-primary hr {
