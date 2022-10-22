@@ -30,7 +30,7 @@ Route::get('/admin/login', function () {
 
 Route::post('/admin/login-cek', [AuthAdminController::class, 'cek'])->name('auth-admin');
 
-Route::middleware(['admin'])->group(function () {
+// Route::middleware(['admin'])->group(function () {
     Route::get('/admin/dashboard', function () {
         return view('pages.admin.dashboard.index', [
             'title'             => 'PATBA | Dashboaord',
@@ -47,7 +47,7 @@ Route::middleware(['admin'])->group(function () {
 
     Route::get('/admin/soal', [SoalController::class, 'index'])->name('admin-soal');
     Route::any('/soal/data',[DataJs::class, 'dataSoal'])->name('datasoal');
-});
+// });
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     Lfm::routes();
