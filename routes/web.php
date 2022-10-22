@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DataJs;
 use App\Http\Controllers\AuthAdminController;
 use App\Http\Controllers\Admin\MataPelajaranController;
 use App\Http\Controllers\Admin\KelasController;
+use App\Http\Controllers\Admin\SoalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +14,7 @@ use App\Http\Controllers\Admin\KelasController;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
+| routes are loaded by the RouteServiceProvider within a group whichcls
 | contains the "web" middleware group. Now create something great!
 |
 */
@@ -40,9 +41,12 @@ Route::middleware(['admin'])->group(function () {
     })->name('admin-dashboard');
     Route::resource('/admin/matapelajaran', MataPelajaranController::class)->name('index', 'admin-matapelajaran')->except('show');
     Route::any('/pelajaran/data',[DataJs::class,'dataPelajaran'])->name('datapelajaran');
-    
+
     Route::resource('/admin/kelas', KelasController::class)->name('index', 'admin-kelas')->except('show');
     Route::any('/kelas/data',[DataJs::class,'dataKelas'])->name('datakelas');
+
+    Route::get('/admin/soal', [SoalController::class, 'index'])->name('admin-soal');
+    Route::any('/soal/data',[DataJs::class, 'dataSoal'])->name('datasoal');
 });
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
