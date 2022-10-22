@@ -40,18 +40,18 @@ Route::middleware(['admin'])->group(function () {
             'breadcrumb2'       => 'Index'
         ]);
     })->name('admin-dashboard');
-
     Route::resource('/admin/matapelajaran', MataPelajaranController::class)->name('index', 'admin-matapelajaran')->except('show');
-    Route::any('/pelajaran/data',[DataJs::class,'dataPelajaran'])->name('datapelajaran');
-    
-    Route::resource('/admin/kelas', KelasController::class)->name('index', 'admin-kelas')->except('show');
-    Route::any('/kelas/data',[DataJs::class,'dataKelas'])->name('datakelas');
-    
-    Route::resource('/admin/siswa', SiswaController::class)->name('index', 'admin-siswa')->except('show');
-    Route::any('/siswa/data',[DataJs::class,'dataSiswa'])->name('dataSiswa');
-    Route::post('/admin/siswa/resetpassword', [SiswaController::class,'resetpassword']);
+    Route::any('/pelajaran/data', [DataJs::class, 'dataPelajaran'])->name('datapelajaran');
 
+    Route::resource('/admin/kelas', KelasController::class)->name('index', 'admin-kelas')->except('show');
+    Route::any('/kelas/data', [DataJs::class, 'dataKelas'])->name('datakelas');
+
+
+    Route::get('/admin/soal', [SoalController::class, 'index'])->name('admin-soal');
+    Route::any('/soal/data', [DataJs::class, 'dataSoal'])->name('datasoal');
 });
+
+Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin-dashboard');
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     Lfm::routes();

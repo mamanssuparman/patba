@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Soal;
 use App\Models\Kelas;
 use App\Models\Pelajaran;
