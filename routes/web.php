@@ -6,7 +6,8 @@ use App\Http\Controllers\Admin\DataJs;
 use App\Http\Controllers\AuthAdminController;
 use App\Http\Controllers\Admin\MataPelajaranController;
 use App\Http\Controllers\Admin\KelasController;
-use App\Http\Controllers\Admin\SiswaController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\SoalController;
 
 /*
 |--------------------------------------------------------------------------
