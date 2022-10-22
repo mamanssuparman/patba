@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Soal;
 use App\Models\Kelas;
 use App\Models\Pelajaran;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
 
 class DataJs extends Controller
 {
@@ -72,25 +72,30 @@ class DataJs extends Controller
             'data'              => $data
         ]);
     }
-    public function dataSoal(Request $request)
+
+    public function dataSiswa(Request $request)
     {
-        $orderBy = 'soals.id';
+        
+        $orderBy = 'users.name';
         switch ($request->input('order.0.column')) {
             case '0':
-                $orderBy = 'soals.id';
+                $orderBy = 'users.id';
                 break;
             case '1':
-                $orderBy = 'soals.soal';
+                $orderBy = 'users.name';
+                break;
+            case '2':
+                $orderBy = 'users.kelas_id';
                 break;
         }
-        $data = DB::table('soals')->leftJoin('jabawans', 'soals.id','=', 'jabawans.soals_id')->select(DB::raw("soals.id,soals.soal,soals.pelajaran_id"));
+        
+        $data = DB::table('users')->leftJoin('kelas','users.kelas_id','=','kelas.id')->select('users.id','users.name','kelas.nama_kelas');
+        
         if ($request->input('search.value') != null) {
             $data = $data->where(function ($q) use ($request) {
-                $q->whereRaw('LOWER(soal) like ?', ['%' . strtolower($request->input('search.value')) . '%']);
+                $q->whereRaw('LOWER(name) like ?', ['%' . strtolower($request->input('search.value')) . '%'])
+                ->orWhereRaw('LOWER(nama_kelas) like ?', ['%' . strtolower($request->input('search.value')) . '%']);
             });
-        }
-        if($request->input('pilih_mapel')){
-            $data = $data->where('soals.pelajaran_id',$request->input('pilih_mapel'));
         }
         $recordsFiltered = $data->get()->count();
         if ($request->input('length') != -1) $data = $data->skip($request->input('start'))->take($request->input('length'));
