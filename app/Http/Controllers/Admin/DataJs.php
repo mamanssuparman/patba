@@ -102,5 +102,6 @@ class DataJs extends Controller
             'recordsFiltered'   => $recordsFiltered,
             'data'              => $data
         ]);
+
     }
 }
