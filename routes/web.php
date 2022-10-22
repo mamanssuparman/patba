@@ -31,25 +31,25 @@ Route::get('/admin/login', function () {
 
 Route::post('/admin/login-cek', [AuthAdminController::class, 'cek'])->name('auth-admin');
 
-// Route::middleware(['admin'])->group(function () {
-Route::get('/admin/dashboard', function () {
-    return view('pages.admin.dashboard.index', [
-        'title'             => 'PATBA | Dashboaord',
-        'mainbreadcrumb'    => 'Dashboard',
-        'breadcrumb1'       => 'Dashboard',
-        'breadcrumb2'       => 'Index'
-    ]);
-})->name('admin-dashboard');
-Route::resource('/admin/matapelajaran', MataPelajaranController::class)->name('index', 'admin-matapelajaran')->except('show');
-Route::any('/pelajaran/data', [DataJs::class, 'dataPelajaran'])->name('datapelajaran');
+Route::middleware(['admin'])->group(function () {
+    Route::get('/admin/dashboard', function () {
+        return view('pages.admin.dashboard.index', [
+            'title'             => 'PATBA | Dashboaord',
+            'mainbreadcrumb'    => 'Dashboard',
+            'breadcrumb1'       => 'Dashboard',
+            'breadcrumb2'       => 'Index'
+        ]);
+    })->name('admin-dashboard');
+    Route::resource('/admin/matapelajaran', MataPelajaranController::class)->name('index', 'admin-matapelajaran')->except('show');
+    Route::any('/pelajaran/data', [DataJs::class, 'dataPelajaran'])->name('datapelajaran');
 
-Route::resource('/admin/kelas', KelasController::class)->name('index', 'admin-kelas')->except('show');
-Route::any('/kelas/data', [DataJs::class, 'dataKelas'])->name('datakelas');
+    Route::resource('/admin/kelas', KelasController::class)->name('index', 'admin-kelas')->except('show');
+    Route::any('/kelas/data', [DataJs::class, 'dataKelas'])->name('datakelas');
 
 
-Route::get('/admin/soal', [SoalController::class, 'index'])->name('admin-soal');
-Route::any('/soal/data', [DataJs::class, 'dataSoal'])->name('datasoal');
-// });
+    Route::get('/admin/soal', [SoalController::class, 'index'])->name('admin-soal');
+    Route::any('/soal/data', [DataJs::class, 'dataSoal'])->name('datasoal');
+});
 
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin-dashboard');
 
