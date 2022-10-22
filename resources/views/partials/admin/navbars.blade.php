@@ -34,7 +34,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="datasoal.html" class="nav-link">
+                    <a href="{{ route('admin-soal') }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Soal</p>
                     </a>
@@ -71,7 +71,7 @@
             </a>
             <ul class="nav nav-treeview ">
                 <li class="nav-item">
-                    <a href="kelasindex.html" class="nav-link ">
+                    <a href="{{ route('admin-kelas') }}" class="nav-link ">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Data Kelas</p>
                     </a>
