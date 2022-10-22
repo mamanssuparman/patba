@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DataJs;
 use App\Http\Controllers\AuthAdminController;
 use App\Http\Controllers\Admin\MataPelajaranController;
 use App\Http\Controllers\Admin\KelasController;
+use App\Http\Controllers\Admin\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,8 @@ Route::middleware(['admin'])->group(function () {
     Route::resource('/admin/kelas', KelasController::class)->name('index', 'admin-kelas')->except('show');
     Route::any('/kelas/data',[DataJs::class,'dataKelas'])->name('datakelas');
 });
+
+    Route::get('/admin/dashboard',[DashboardController::class, 'index'])->name('admin-dashboard');
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     Lfm::routes();
