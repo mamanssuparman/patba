@@ -107,6 +107,17 @@
   border-color: #9FC0FA;
 }
 
+.btn-cancel {
+  color: #EA3D2F;
+  font-weight: 600;
+  background-color: #FEE4E2;
+  border-color: #EA3D2F;
+  border-radius: 10px;
+}
+.btn-cancel:hover {
+  background-color: #fcdbd8;
+}
+
 .btn-simpan {
   color: #367BF5;
   font-weight: 600;

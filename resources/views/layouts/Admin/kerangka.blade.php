@@ -55,18 +55,42 @@
                     BANJAR </b></h5>
             <!-- </div>     -->
 
-            <div class="user-panel pb-1 d-flex">
-                <div class="info">
-                    <a href="#" class="d-block">Administrator</a>
+            <div class="nav-item dropdown d-flex">
+                <div class="nav-link text-dark pe-0">
+                    Administrator
                 </div>
-                <div class="image">
-                    <img src="#" class="img-circle elevation-2 " alt="Image"
-                        style="object-fit: cover; max-height: 32px;">
+                <a class="nav-link pt-1" data-toggle="dropdown" href="#">
+                    <img src="/admin/img/profile.jpg" alt="profile" width="32" height="32" class="rounded-circle">
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <li class="dropdown-item"><a href="#" class="text-dark">Profile</a></li>
+                    <li class="dropdown-item"><a href="#" class="text-dark">About PATBA</a></li>
+                    <div class="dropdown-divider"></div>
+                    <li><button class="dropdown-item" data-toggle="modal" data-target="#exampleModal">Sign out</button></li>
                 </div>
             </div>
 
         </nav>
         <!-- /.navbar -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content"  style="border-radius: 12px;">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Konfirmasi</h5>
+                  <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Keluar dari aplikasi PATBA?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btnnn btn-cancel" data-dismiss="modal">Batal</button>
+                  <button type="button" class="btnnn btn-simpan">Ya, keluar</button>
+                </div>
+              </div>
+            </div>
+        </div>
 
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">

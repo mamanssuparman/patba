@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Soal;
 use App\Models\Kelas;
 use App\Models\Pelajaran;
 use App\Models\User;
@@ -107,5 +108,6 @@ class DataJs extends Controller
             'recordsFiltered'   => $recordsFiltered,
             'data'              => $data
         ]);
+
     }
 }
